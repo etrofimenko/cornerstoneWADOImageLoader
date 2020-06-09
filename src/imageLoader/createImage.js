@@ -166,6 +166,11 @@ function createImage(imageId, pixelData, transferSyntax, options) {
         image.getPixelData = () => results.intPixelData;
       } else {
         image.getPixelData = () => imageFrame.pixelData;
+		image.setPixelData = function (pixelData, width, height) {
+			imageFrame.pixelData = pixelData;
+			imageFrame.columns = height;
+			imageFrame.rows = width;
+		};
       }
 
       if (image.color) {
